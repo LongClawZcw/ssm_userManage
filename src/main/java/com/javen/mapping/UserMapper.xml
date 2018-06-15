@@ -41,9 +41,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.javen.model.User" >
-    insert into user_t (id, user_name, password, 
+    insert into user_t (user_name, password, 
       age)
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.javen.model.User" >

@@ -43,20 +43,20 @@ public class UserController {
         if (userId==1) {
         	 user = new User();  
         	 user.setAge(11);
-        	 user.setId(1);
+        	 //user.setId(1);
         	 user.setPassword("123");
         	 user.setUserName("javen");
 		}
        
         log.debug(user.toString());
-        //this.userService.addUserInfo(user);
+        this.userService.addUserInfo(user);
         model.addAttribute("user", user);  
         return "index";  
     }  
     @RequestMapping("/login")
     public String login(HttpServletRequest request){
-    	String username = request.getParameter("username");  
-        String password = request.getParameter("password");  
+    	String username = request.getParameter("loginname");  
+        String password = request.getParameter("loginpass");  
         User user = new User();  
         //把接收到的值放入po里  
         user.setUserName(username); 
@@ -66,7 +66,7 @@ public class UserController {
         if(user2!=null){  
             return "/user/userlist";  
         }else{              
-            return "/index.jsp";  
+            return "index";  
         }      
     }
     @RequestMapping("/userlist")//为方法设置访问路径  
@@ -76,13 +76,13 @@ public class UserController {
         //把值存到request作用域里，传到页面上  
         request.setAttribute("ulist", ulist);  
         //跳转的mian.jsp页面  
-        return "/main.jsp";  
+        return "main";  
     }  
     @RequestMapping("/uid")//为方法设置访问路径  
     public String updateid(HttpServletRequest request, User user){  
         List<User> uid = userService.getupdateid(user);  
         request.setAttribute("uid", uid);  
-        return "/update.jsp";  
+        return "update";  
     } 
     @RequestMapping(value="/delete/{id}")  
     public ModelAndView delete(@PathVariable("id")int id){  
@@ -90,7 +90,7 @@ public class UserController {
         ModelAndView mav=new ModelAndView();  
         mav.addObject("deleteUser", deleteUser);  
         //跳到提醒页，返回service里定义的方法，提醒删除成功还是失败  
-        mav.setViewName("/tx.jsp");  
+        mav.setViewName("tx");  
         return mav; 
     }
     /**  
@@ -110,7 +110,7 @@ public class UserController {
     public String insert(HttpServletRequest request, User user ){  
         String inserUser = userService.getinsert(user);  
         request.setAttribute("inserUser", inserUser);  
-        return "/insert.jsp";  
+        return "insert";  
     }  
     // /user/showUser?id=1
     @RequestMapping(value="/showUser",method=RequestMethod.GET)  

@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th>密码</th>   
             <th>年龄</th>     
         </tr>  
-        <c:forEach var="po" items="${ulist }">  
+        <c:forEach var="po" items="${ulist}">  
         <tr>  
             <!-- 和po类里的属性名一样 -->  
             <td>${po.id }</td>  
@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td><!-- 用超链接传值方式把userid的值传给控制层 -->  
             <a href="/user/uid?id=${po.id}">修改</a>   
             <!-- javascript:void(0)没有返回值，鼠标点击什么也不发生，如果写#号，点击会跳到顶部。  
-                onclick="deleteUser(${po.userid})：调javascript里的方法，并把要删除的id值传进来  
+                onclick="deleteUser(${po.id})：调javascript里的方法，并把要删除的id值传进来  
              -->  
             <a href="javascript:void(0)" onclick="deleteUser(${po.id})">删除</a>    
             </td>  

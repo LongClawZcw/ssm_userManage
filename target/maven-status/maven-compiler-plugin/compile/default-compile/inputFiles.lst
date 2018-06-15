@@ -1,5 +1,5 @@
-D:\Home\SSM\src\main\java\com\javen\service\IUserService.java
-D:\Home\SSM\src\main\java\com\javen\model\User.java
-D:\Home\SSM\src\main\java\com\javen\service\impl\UserServiceImpl.java
-D:\Home\SSM\src\main\java\com\javen\controller\UserController.java
-D:\Home\SSM\src\main\java\com\javen\dao\IUserDao.java
+D:\MavenProjects\user_manage\src\main\java\com\javen\model\User.java
+D:\MavenProjects\user_manage\src\main\java\com\javen\dao\IUserDao.java
+D:\MavenProjects\user_manage\src\main\java\com\javen\controller\UserController.java
+D:\MavenProjects\user_manage\src\main\java\com\javen\service\impl\UserServiceImpl.java
+D:\MavenProjects\user_manage\src\main\java\com\javen\service\IUserService.java
