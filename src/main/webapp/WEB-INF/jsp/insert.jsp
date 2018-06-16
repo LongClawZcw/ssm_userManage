@@ -21,13 +21,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="styles.css"> 
     -->  
     <!-- 引入jQuery文件 -->  
-    <script src="/user/js/jquery-1.11.2.min.js" language="javascript"></script>  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" language="javascript"></script>  
     <script type="text/javascript">  
     // 控制onsubmit提交的方法，方法名是vform()  
         function vform(){  
             //获取下面的id值  
-            var ln = $("#loginname").val();  
-            var lp = $("#loginpass").val();  
+            var ln = $("#userName").val();  
+            var lp = $("#password").val();  
             var un = $("#age").val();  
             // var up = $("#upower").val();  
             // var bir = $("#birthday").val();  
@@ -69,8 +69,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th>年龄</th>   
         </tr>           
         <tr>  
-            <td><input type="text" id="loginname" name="loginname"/></td>  
-            <td><input type="text" id="loginpass" name="loginpass"/></td>  
+            <td><input type="text" id="loginname" name="userName"/></td>  
+            <td><input type="text" id="loginpass" name="password"/></td>  
             <td><input type="text" id="age" name="age"/></td>             
             <!-- <td>  
                 <select id="upower" name="upower" >  

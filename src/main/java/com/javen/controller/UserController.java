@@ -64,7 +64,9 @@ public class UserController {
         //调service方法去数据库验证  
         User user2 = userService.dologin(user);  
         if(user2!=null){  
-            return "/user/userlist";  
+        	List<User> ulist = userService.getUserList();  
+        	request.setAttribute("ulist", ulist); 
+            return "main";  
         }else{              
             return "index";  
         }      
@@ -101,7 +103,11 @@ public class UserController {
         String updateUser = userService.getupdate(user);          
         request.setAttribute("updateUser", updateUser);  
         //修改信息后留在当前页  
-        return "/user/uid";          
+        return "gxtx";          
+    }  
+    @RequestMapping("/getinsert")//为方法设置访问路径  
+    public String getinsert(HttpServletRequest request){  
+        return "insert";  
     }  
     /**  
      * 添加用户信息  
@@ -109,8 +115,9 @@ public class UserController {
     @RequestMapping("/insert")//为方法设置访问路径  
     public String insert(HttpServletRequest request, User user ){  
         String inserUser = userService.getinsert(user);  
-        request.setAttribute("inserUser", inserUser);  
-        return "insert";  
+        request.setAttribute("inserUser", inserUser);
+        
+        return "crtx";  
     }  
     // /user/showUser?id=1
     @RequestMapping(value="/showUser",method=RequestMethod.GET)  

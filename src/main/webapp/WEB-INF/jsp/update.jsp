@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="styles.css"> 
     -->  
     <!-- 引入jQuery文件 -->  
-    <script src="/js/jquery-1.11.2.min.js" language="javascript"></script>  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" language="javascript"></script>  
     <script type="text/javascript">  
     // 控制onsubmit提交的方法，方法名是vform()  
         function vform(){  
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>  
     <!-- 用onsubmit调用上面的方法 -->  
     <form action="user/update" method="post" onsubmit="return vform()">      
-    <c:forEach var="po" items="${id }">      
+    <c:forEach var="po" items="${uid}">      
         <input type="hidden"  name="id" value="${po.id}"/><br/>     
         <table width="1000" border="1">  
             <tr>                
@@ -60,16 +60,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <th>年龄</th> 
             </tr>           
             <tr>  
-                <td><input type="text" id="loginname" name="loginname" value="${po.userName}"></td>  
-                <td><input type="text" id="loginpass" name="loginpass" value="${po.password}"></td>  
+                <td><input type="text" id="loginname" name="userName" value="${po.userName}"></td>  
+                <td><input type="text" id="loginpass" name="password" value="${po.password}"></td>  
                 <td><input type="text" id="age" name="age" value="${po.age }"></td>  
-                                
-                <!-- <td><input type="text" id="birthday" name="birthday" value="${po.birthday }"></td>       -->
-                <<!-- td>性别：  
-                    男<input type="radio" name="sex" value="1">  
-                    女<input type="radio" name="sex" value="2">  
-                    保密<input type="radio" name="sex" value="3" checked="checked">  
-                </td>   -->
            </tr>  
     </table>  
     </c:forEach>  

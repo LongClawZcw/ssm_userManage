@@ -4,12 +4,10 @@
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
 %>  
-  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">  
 <html>  
   <head>  
-    <base href="<%=basePath%>">  
-      
+    <base href="<%=basePath%>">
     <title>用户列表</title>  
       
     <meta http-equiv="pragma" content="no-cache">  
@@ -21,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="styles.css"> 
     -->  
     <!-- 引入jQuery文件 -->  
-    <script src="/js/jquery-1.11.2.min.js" language="javascript"></script>  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" language="javascript"></script>  
     <style type="text/css">  
         td{text-align: center;}  
         div{height: 1.5em;}  
@@ -42,8 +40,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //document.getElementById("username").value = "";             
             //获取upower的id，让它被选中的序号等于0，因为下面有好几项option，第0项就是第一个  
             document.getElementById("upower").selectedIndex = 0;  
-        }             
-    </script>  
+        } 
+        function submit() {  
+            with(document.getElementById("bigt")) {  
+                       action="insert.jsp";  
+                       method="post";  
+                       submit();  
+                }  
+       }            
+    </script>
   
   </head>  
     
@@ -68,7 +73,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>  
   </form>  
   <hr>  
-     <a href="/jsp/insert.jsp">添加用户</a>  
+     <a href="/user/getinsert">添加用户</a>
+     <button id="bigt" onclick="submit()">添加用户</button>
+     <input id= bigt type="button" onclick="submit()" value="添加用户">
     <table border="1" width="700">  
         <tr>  
             <th>ID</th>  

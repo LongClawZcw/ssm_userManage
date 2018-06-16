@@ -54,9 +54,9 @@ public class UserServiceImpl implements IUserService {
 		int d = userDao.updateByPrimaryKey(user);  
         String message="";  
         if(d > 0){  
-            message = "删除成功";  
+            message = "更新成功";  
         }else{  
-            message = "删除失败";  
+            message = "更新失败";  
         }  
         return message; 
 	}
@@ -65,9 +65,9 @@ public class UserServiceImpl implements IUserService {
 		int d = userDao.insertSelective(user);  
         String message="";  
         if(d > 0){  
-            message = "删除成功";  
+            message = "添加成功";  
         }else{  
-            message = "删除失败";  
+            message = "添加失败";  
         }  
         return message; 
 	}  
