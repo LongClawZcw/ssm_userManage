@@ -71,6 +71,24 @@ public class UserController {
             return "index";  
         }      
     }
+    @RequestMapping("/select")
+    public String select(HttpServletRequest request,Model model){
+    	String username = request.getParameter("username");  
+        int age = Integer.parseInt(request.getParameter("age"));  
+        User user = new User();  
+        //把接收到的值放入po里  
+        user.setUserName(username); 
+        user.setAge(age);
+        //调service方法去数据库验证  
+        User user2 = userService.selectByNameandAge(user);  
+        if(user2!=null){  
+        	log.debug(user2.toString());
+            model.addAttribute("user", user2);  
+            return "showUser"; 
+        }else{              
+            return "queryfail";  
+        }      
+    }
     @RequestMapping("/userlist")//为方法设置访问路径  
     public String userList(HttpServletRequest request){  
         //调service里的方法  

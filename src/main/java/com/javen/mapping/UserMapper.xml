@@ -24,6 +24,13 @@
     where user_name = #{userName,jdbcType=VARCHAR} and password= #{password,jdbcType=VARCHAR}
   </select>
   
+  <select id="selectByNameandAge" resultMap="BaseResultMap" parameterType="com.javen.model.User" >
+    select 
+    <include refid="Base_Column_List"/>
+    from user_t
+    where user_name = #{userName,jdbcType=VARCHAR} and age= #{age,jdbcType=INTEGER}
+  </select>
+  
   <select id="userList" resultMap="BaseResultMap" >  
         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->  
         select <include refid="Base_Column_List"></include> from user_t  

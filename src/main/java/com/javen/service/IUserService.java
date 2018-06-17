@@ -20,5 +20,7 @@ public interface IUserService {
 
 	public String getupdate(User user);
 
-	public String getinsert(User user);  
+	public String getinsert(User user);
+
+	public User selectByNameandAge(User user);  
 }  

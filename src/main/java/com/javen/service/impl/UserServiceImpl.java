@@ -70,6 +70,10 @@ public class UserServiceImpl implements IUserService {
             message = "添加失败";  
         }  
         return message; 
+	}
+
+	public User selectByNameandAge(User user) {
+		return this.userDao.selectByNameandAge(user);
 	}  
   
 }  

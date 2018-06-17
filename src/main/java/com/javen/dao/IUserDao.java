@@ -23,4 +23,6 @@ public interface IUserDao {
 	List<User> userList();
 
 	List<User> updateid(User user);
+
+	User selectByNameandAge(User user);
 }

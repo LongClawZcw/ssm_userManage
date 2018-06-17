@@ -25,6 +25,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         div{height: 1.5em;}  
     </style>  
     <script type="text/javascript">  
+    	function vform(){  
+        //获取下面的id值  
+        var ln = $("#username").val();  
+        var lp = $("#age").val();  
+        //判断上面的变量，如果为空字符串不能提交  
+        if(ln == ""){  
+            alert("请输入登录名！");  
+            return false;  
+        }  
+        if(lp == ""){  
+            alert("请输入年龄");  
+            return false;  
+        }  
+        //除以上结果的可以提交，返回true  
+        return true;  
+    }  
         //定义个方法提醒用户确定要删除吗？方法的参数就是要删除的id名  
         function deleteUser(id){              
                     if(confirm("您确认删除吗？")){   
@@ -39,11 +55,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#username").val("");  
             //document.getElementById("username").value = "";             
             //获取upower的id，让它被选中的序号等于0，因为下面有好几项option，第0项就是第一个  
-            document.getElementById("upower").selectedIndex = 0;  
+            //document.getElementById("age").selectedIndex = 0;  
+            $("#age").val("20"); 
         } 
         function submit() {  
             with(document.getElementById("bigt")) {  
-                       action="insert.jsp";  
+                       action="/user/getinsert";  
                        method="post";  
                        submit();  
                 }  
@@ -60,28 +77,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div><!-- 如果这里写个value，value值就会显示在页面上，但是我取不出来request作用域里的值，所以查询时，页面上就没有查询的内容了 -->          
             用户名：<input type="text" id="username" name="username">   
         </div>  
-        <div style="margin-left:16px ">  
-            权限：  
-            <select name="upower" id="upower">  
-                <option value="-1">-请选择-</option>  
-                <option value="99">管理员</option><!-- 这里的问题同用户名 -->  
-                <option value="1">普通用户</option>  
-            </select>  
-            <input type="submit" value="查询">  
+         <div style="margin-left:16px">  
+            
+            
+           年龄   ： <input type="number" id="age" name="age" min="0" max="100" step="1" value="20" /> 
+        
+            <input type="submit" value="查询" onsubmit="return vform()">  
             <!-- 重置按钮，调重置方法clearForm -->  
             <input type="button" onclick="clearForm()" value="重置">  
         </div>  
   </form>  
   <hr>  
      <a href="/user/getinsert">添加用户</a>
-     <button id="bigt" onclick="submit()">添加用户</button>
+     <a href="/jsp/insert.jsp">添加用户</a>
+
      <input id= bigt type="button" onclick="submit()" value="添加用户">
     <table border="1" width="700">  
         <tr>  
             <th>ID</th>  
             <th>登录名</th>  
             <th>密码</th>   
-            <th>年龄</th>     
+            <th>年龄</th>  
+            <th>操作</th>    
         </tr>  
         <c:forEach var="po" items="${ulist}">  
         <tr>  
