@@ -173,6 +173,20 @@
             <artifactId>commons-codec</artifactId>  
             <version>1.9</version>  
         </dependency>  
+        
+        <!-- pageHelper -->
+		<dependency>
+   			 <groupId>com.github.pagehelper</groupId>
+    		 <artifactId>pagehelper</artifactId>
+    		 <version>5.1.1</version>
+		</dependency>
+
+		<!--jsqlparser-->
+		<dependency>
+    		<groupId>com.github.jsqlparser</groupId>
+    		<artifactId>jsqlparser</artifactId>
+    		<version>1.0</version>
+		</dependency>
 
 	</dependencies>
 	
@@ -193,5 +207,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	   
 </project>

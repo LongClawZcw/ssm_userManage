@@ -1,5 +1,7 @@
-D:\MavenProjects\user_manage\src\main\java\com\javen\model\User.java
-D:\MavenProjects\user_manage\src\main\java\com\javen\dao\IUserDao.java
-D:\MavenProjects\user_manage\src\main\java\com\javen\controller\UserController.java
-D:\MavenProjects\user_manage\src\main\java\com\javen\service\impl\UserServiceImpl.java
-D:\MavenProjects\user_manage\src\main\java\com\javen\service\IUserService.java
+D:\Project\user_manage\src\main\java\com\javen\dao\IUserDao.java
+D:\Project\user_manage\src\main\java\com\javen\service\impl\UserServiceImpl.java
+D:\Project\user_manage\src\main\java\com\javen\util\Page.java
+D:\Project\user_manage\src\main\java\com\javen\service\IUserService.java
+D:\Project\user_manage\src\main\java\com\javen\controller\UserController.java
+D:\Project\user_manage\src\main\java\com\javen\model\User.java
+D:\Project\user_manage\src\main\java\com\javen\model\PageBean.java

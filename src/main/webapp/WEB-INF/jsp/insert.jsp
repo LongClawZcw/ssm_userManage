@@ -21,7 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="styles.css"> 
     -->  
     <!-- 引入jQuery文件 -->  
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" language="javascript"></script>  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" language="javascript"></script>
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+ 
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+ 
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
     <script type="text/javascript">  
     // 控制onsubmit提交的方法，方法名是vform()  
         function vform(){  

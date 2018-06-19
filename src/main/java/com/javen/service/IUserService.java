@@ -1,5 +1,6 @@
 package com.javen.service;  
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.javen.model.User;
@@ -22,5 +23,6 @@ public interface IUserService {
 
 	public String getinsert(User user);
 
-	public User selectByNameandAge(User user);  
+	public User selectByNameandAge(User user);
+
 }  

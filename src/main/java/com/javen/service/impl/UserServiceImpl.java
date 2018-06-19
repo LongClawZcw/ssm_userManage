@@ -1,4 +1,5 @@
 package com.javen.service.impl;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -74,6 +75,5 @@ public class UserServiceImpl implements IUserService {
 
 	public User selectByNameandAge(User user) {
 		return this.userDao.selectByNameandAge(user);
-	}  
-  
+	}
 }  

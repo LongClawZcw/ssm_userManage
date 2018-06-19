@@ -10,6 +10,7 @@
   <sql id="Base_Column_List" >
     id, user_name, password, age
   </sql>
+   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -36,8 +37,8 @@
         select <include refid="Base_Column_List"></include> from user_t  
     </select>
     
-    <!-- 查询修改用户信息的id -->  
-    <select id="updateid" resultMap="BaseResultMap" parameterType="com.javen.model.User">  
+  <!-- 查询修改用户信息的id -->  
+  <select id="updateid" resultMap="BaseResultMap" parameterType="com.javen.model.User">  
         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->  
         select <include refid="Base_Column_List"></include> from user_t 
         <where>id=#{id}</where>  
@@ -47,12 +48,14 @@
     delete from user_t
     where id = #{id,jdbcType=INTEGER}
   </delete>
+ 
   <insert id="insert" parameterType="com.javen.model.User" >
     insert into user_t (user_name, password, 
       age)
     values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER})
   </insert>
+ 
   <insert id="insertSelective" parameterType="com.javen.model.User" >
     insert into user_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -84,6 +87,7 @@
       </if>
     </trim>
   </insert>
+ 
   <update id="updateByPrimaryKeySelective" parameterType="com.javen.model.User" >
     update user_t
     <set >
@@ -99,6 +103,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.javen.model.User" >
     update user_t
     set user_name = #{userName,jdbcType=VARCHAR},
@@ -106,4 +111,5 @@
       age = #{age,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    
 </mapper>

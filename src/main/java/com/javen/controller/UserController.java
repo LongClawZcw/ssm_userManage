@@ -1,6 +1,7 @@
 package com.javen.controller;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.AgeFileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,8 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.javen.model.User;
 import com.javen.service.IUserService;
+import com.javen.util.Page;
   
   
 @Controller  
@@ -91,13 +96,28 @@ public class UserController {
     }
     @RequestMapping("/userlist")//为方法设置访问路径  
     public String userList(HttpServletRequest request){  
-        //调service里的方法  
+    	
+        int start=0;
+        int count=5;
+        try {
+            start = Integer.parseInt(request.getParameter("page.start"));
+            count = Integer.parseInt(request.getParameter("page.count"));
+        } catch (Exception e) {
+        }
+        Page page = new Page(start, count);
+        //使用pageHelper来设置分页
+        PageHelper.offsetPage(page.getStart(),page.getCount());
         List<User> ulist = userService.getUserList();  
+        //使用pageHelper来获取总数
+        int total = (int) new PageInfo<User>(ulist).getTotal();
+        page.setTotal(total);
         //把值存到request作用域里，传到页面上  
-        request.setAttribute("ulist", ulist);  
+        request.setAttribute("ulist", ulist);   
+        request.setAttribute("page", page);
         //跳转的mian.jsp页面  
         return "main";  
-    }  
+    } 
+   
     @RequestMapping("/uid")//为方法设置访问路径  
     public String updateid(HttpServletRequest request, User user){  
         List<User> uid = userService.getupdateid(user);  

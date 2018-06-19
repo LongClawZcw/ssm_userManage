@@ -1,5 +1,6 @@
 package com.javen.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.javen.model.User;
@@ -25,4 +26,5 @@ public interface IUserDao {
 	List<User> updateid(User user);
 
 	User selectByNameandAge(User user);
+
 }
