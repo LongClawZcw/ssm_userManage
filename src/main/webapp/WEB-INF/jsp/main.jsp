@@ -152,14 +152,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<a  href="user/userlist?page.start=${page.start-page.count}">
                 	<span>‹</span>
             	</a>
-        	</li>
+        	</li>  	
         	
-        	<!-- <c:forEach begin="0" end="${page.totalPage-1}" varStatus="status">
+            <!-- <c:forEach begin="0" end="${page.totalPage-1}" varStatus="status">
             <li>
                 <a href="user/userlist?page.start=${status.index*page.count}" class="current">${status.count}</a>
             </li>
         	</c:forEach> -->
-        	
         	<c:forEach begin="0" end="${page.totalPage-1}" varStatus="status">
 
     		<c:if test="${status.count*page.count-page.start<=15 && status.count*page.count-page.start>=-5}">

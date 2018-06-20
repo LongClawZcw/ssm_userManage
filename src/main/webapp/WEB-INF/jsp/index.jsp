@@ -8,8 +8,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>  
   <head>  
     <base href="<%=basePath%>">  
-      
-    <title>管理员登录页</title>  
+    <style>  
+      body{  
+      margin-left:auto;  
+      margin-right:auto; 
+      margin-TOP:100PX; 
+      height:auto;
+      width:100%;
+      font:normal 100%; 
+      text-align:center; 
+      vertical-align:middle;
+      }
+      html{
+      overflow-y:auto;
+      }
+      .planecenter{
+      position:fixed;width:100%;height:100%;top;0;left:0;
+      }
+      .center{
+      position:absolute;top:0;left:0;bottom:0;right:0;width:50%;height:50%;margin:auto;
+      }
+    </style>
+    <title>管理员登录页</title> 
+    <meta name="viewport" content="width=device-width,initial-scale=1" /> 
     <meta http-equiv="pragma" content="no-cache">  
     <meta http-equiv="cache-control" content="no-cache">  
     <meta http-equiv="expires" content="0">      
@@ -53,22 +74,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //除以上结果的可以提交，返回true  
             return true;  
         }  
+        //重置按钮方法  
+        function clearForm() {  
+            //获取uname的id，让它的值等于空字符串  
+            $("#loginname").val("");  
+            //document.getElementById("username").value = "";             
+            //获取upower的id，让它被选中的序号等于0，因为下面有好几项option，第0项就是第一个  
+            //document.getElementById("age").selectedIndex = 0;  
+            $("#loginpass").val(""); 
+        } 
     </script>  
     
   </head>  
  
     
-  <body>  
-    <div class="container-fluid"> 
-   <hr>  
-   <!-- 用onsubmit调用上面的方法 -->  
-   <form action="user/login" method="post" onsubmit="return vform()">  
-    <!-- 用po类，这个name值可以随意起，不受mybatis配置文件影响了 -->  
-        <div>用户名：<input type="text" id="loginname" name="loginname" placeholder="请输入用户名"></div>  
-        <div style="margin-left:16px">密码：<input type="password" id="loginpass" name="loginpass" placeholder="请输入密码"></div>          
-        <div><input type="submit" value="登录"></div>
-        <div><p>Things cats <span class="text-danger">love:</span></p> </div>
-   </form>  
-   </div> 
+  <body class="center"> 
+    <h3>管理员登录</h3>
+    <hr>
+    <form action="user/login" method="post" onsubmit="return vform()" > 
+    <div class="input-group" style="width:560px;margin:0 auto">
+      <span class="input-group-addon" id="basic-addon1">用户名</span>
+      <input id="loginname" name="loginname" type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+    </div>
+    <hr>
+    <!--下面是密码输入框-->
+    <div class="input-group" style="width:560px;margin:0 auto">
+      <span class="input-group-addon" id="basic-addon1">密码</span>
+      <input id="loginpass"name="loginpass" type="text" class="form-control" placeholder="密  码" aria-describedby="basic-addon1">
+    </div>
+    <hr>
+    <!--下面是登陆按钮,包括颜色控制-->
+    <button type="submit" style="width:280px;text-align:center" class="btn btn-default" >登 录</button>
+    <!--下面是重置按钮,包括颜色控制--> 
+    <button type="button" style="width:280px;text-align:center" class="btn btn-default" onclick="clearForm()">重置</button> 
+    </form>
+    <hr>    
   </body>  
 </html>  

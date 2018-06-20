@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.AgeFileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -69,29 +68,10 @@ public class UserController {
         //调service方法去数据库验证  
         User user2 = userService.dologin(user);  
         if(user2!=null){  
-        	List<User> ulist = userService.getUserList();  
-        	request.setAttribute("ulist", ulist); 
-            return "main";  
+
+            return "redirect:userlist";  
         }else{              
             return "index";  
-        }      
-    }
-    @RequestMapping("/select")
-    public String select(HttpServletRequest request,Model model){
-    	String username = request.getParameter("username");  
-        int age = Integer.parseInt(request.getParameter("age"));  
-        User user = new User();  
-        //把接收到的值放入po里  
-        user.setUserName(username); 
-        user.setAge(age);
-        //调service方法去数据库验证  
-        User user2 = userService.selectByNameandAge(user);  
-        if(user2!=null){  
-        	log.debug(user2.toString());
-            model.addAttribute("user", user2);  
-            return "showUser"; 
-        }else{              
-            return "queryfail";  
         }      
     }
     @RequestMapping("/userlist")//为方法设置访问路径  
@@ -117,6 +97,25 @@ public class UserController {
         //跳转的mian.jsp页面  
         return "main";  
     } 
+    @RequestMapping("/select")
+    public String select(HttpServletRequest request,Model model){
+    	String username = request.getParameter("username");  
+        int age = Integer.parseInt(request.getParameter("age"));  
+        User user = new User();  
+        //把接收到的值放入po里  
+        user.setUserName(username); 
+        user.setAge(age);
+        //调service方法去数据库验证  
+        User user2 = userService.selectByNameandAge(user);  
+        if(user2!=null){  
+        	log.debug(user2.toString());
+            model.addAttribute("user", user2);  
+            return "showUser"; 
+        }else{              
+            return "queryfail";  
+        }      
+    }
+   
    
     @RequestMapping("/uid")//为方法设置访问路径  
     public String updateid(HttpServletRequest request, User user){  
